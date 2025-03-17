@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <!-- les styles -->
+    <link rel="stylesheet" href = "carrousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="carrousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="cssjs/css/materialize.min.css">
+    <link rel="stylesheet" href="cssjs/css/materialize-icons.css">
+    <link rel="stylesheet" href="cssjs/icon/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Play&family=Saira+Condensed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cssjs/css/estilos.css">
+    <link rel="stylesheet" href="cssjs/css/personal.css">
+
+    <!-- fin styles -->
+
+    <!-- javascript -->
+    <script src="cssjs/js/jquery-3.5.1.min.js"></script>
+    <script src="cssjs/js/materialize.min.js"></script>
+    <!-- fin javascript -->
+
+<style>
+
+
+/* ------------------------- */
+/* CARROSEL DE CATEGORIAS------------MENUUUUUUUUUUU */
+/* ------------------------- */
+  .mas-visitados-iconos{
+    position: relative;
+    top: 100px;
+  }
+  .respon-mas-visitados-iconos{
+    max-width: 800px;
+  }
+.item-carrosel-categorias-menu-iconos{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+ 
+}
+
+
+.imgen-carrosel-pub-menu-iconos{
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #d1d1d1;
+    background-color: #f5f5f5 !important;  
+}
+
+.imgen-carrosel-pub-menu-iconos img{
+  position: absolute;
+  width: 35% !important;
+  border: 1px solid transparent;
+  padding: 5px;
+}
+
+.links-carrosel-pub-menu-iconos:hover .imgen-carrosel-pub img{
+    border: 1px solid #bdbdbd;
+  }
+ .links-carrosel-pub-menu-iconos:hover .titulo-carrousel-pub p{
+    border-bottom: 5px solid transparent;
+  }
+.titulo-carrousel-pub-menu-iconos{
+    width: 80px;
+    height: 40px;
+    text-align: center;
+}
+
+.titulo-carrousel-pub-menu-iconos p{
+    font-size: 10px !important;
+    border-bottom: 5px solid transparent;
+    color: black;
+    margin-top: 0px;
+    font-family: 'Play', sans-serif;
+   
+}
+
+@media screen and (max-width:1000px){
+    
+
+    .imgen-carrosel-pub-menu-iconos img{
+      width: 35% !important;
+    }
+  
+   }
+  @media screen and (max-width:1400px){
+      
+    .imgen-carrosel-pub-menu-iconos{
+      width: 78px !important;
+      height: 78px !important;
+  
+    }
+    .imgen-carrosel-pub-menu-iconos img{
+      width: 45% !important;
+    }
+    .titulo-carrousel-pub-menu-iconos {
+      width: 78px !important;
+   
+    }
+    .titulo-carrousel-pub-menu-iconos p{
+      font-size: 11px !important;
+   
+    }
+   }
+   @media screen and (max-width:620px){
+    .imgen-carrosel-pub-menu-iconos{
+      width: 65px !important;
+      height: 65px !important;
+  
+    }
+  
+    .imgen-carrosel-pub-menu-iconos img{
+      width: 50% !important;
+    }
+    .titulo-carrousel-pub-menu-iconos {
+      width: 65px !important;
+   
+    }
+   }
+  @media screen and (max-width:500px){
+    .respon-mas-visitados-iconos{
+      width: 95%;
+    }
+    .imgen-carrosel-pub-menu-iconos{
+      width: 55px !important;
+      height: 55px !important;
+  
+    }
+    .imgen-carrosel-pub-menu-iconos img{
+      width: 50% !important;
+    }
+    .titulo-carrousel-pub-menu-iconos {
+      width: 55px !important;
+   
+    }
+    .titulo-carrousel-pub-menu-iconos p{
+      font-size: 11px !important;
+   
+    }
+
+   }
+   @media screen and (max-width:330px){
+    
+    
+     } 
+   @media screen and (max-width:285px){
+      
+    .imgen-carrosel-pub-menu-iconos{
+      width: 50px !important;
+      height: 50px !important;
+  
+    }
+    .imgen-carrosel-pub-menu-iconos img{
+      width: 58% !important;
+    }
+    .titulo-carrousel-pub-menu-iconos {
+      width: 50px !important;
+   
+    }
+  
+   }
+
+/* ------------------------- */
+/* FIN DEL CARROSEL DE CATEGORIAS------------MENUUUUU */
+/* ------------------------- */
+
+
+
+
+
+
+
+</style>
+</head>
+<body >
+
+
+
+<!-- NAV-STICKY-->
+
+<section class="contenedor-sticky  container-fluid  barra-de-nav-scrollTop ">
+  <div class="menu-sticky container" id="menu">
+      <div class=" contenedor-enlaces-nav-sticky">
+          <div class="logotipo-sticky">
+              <a href="http://192.168.0.51:5000/i">HTP</a>
+          </div>
+          <div class="btn-departamentos-sticky esconde-menu-iniciar-idiomas">
+            <a>categorias<i class="  material-icons right">menu</i></a>
+
+   
+
+              <div class="dropppdown-content-sticky">
+                  <div class="collection collection-1 col col4 bordes-bottom">
+                    <a href="http://192.168.0.51:5000/cat" class="collection-item droppdown-2 " style="border-bottom: none !important;">
+                      <img src="img/iphone.png" class="responsive-img imagen-menu-grandes-dis" alt="">
+                      Electronica</a>
+                    <a href="#!" class="collection-item droppdown-3" style="border-bottom: none !important;">
+                      <img src="img/hogar-1.png" class="responsive-img imagen-menu-grandes-dis" alt="">
+                       Casas</a>
+                    <a href="#!" class="collection-item droppdown-4" style="border-bottom: none !important;">
+                      <img src="img/camisa.png" class="responsive-img imagen-menu-grandes-dis" alt="">
+                       Vestimenta</a>
+                    <a href="#!" class="collection-item droppdown-5" style="border-bottom: none !important;">
+                      <img src="img/trabajar.png" class="responsive-img imagen-menu-grandes-dis" alt="">
+                       Servicios</a>
+                  </div>
+                  <div class="collection collection-1-1 col col4 droppdown-content-2 bordes-bottom">
+                      <div class="collection collection-1-2">
+                        <a href="#!" class="collection-item " style="border-bottom: none !important;">Telefonos</a>
+                        <a href="#!" class="collection-item " style="border-bottom: none !important;">Televisiones</a>
+                        <a href="#!" class="collection-item" style="border-bottom: none !important;">Ordenadores</a>
+                        <a href="#!" class="collection-item" style="border-bottom: none !important;"> Electrodomesticos</a>
+                        <a href="#!" class="collection-item" style="border-bottom: none !important;"> Tienda</a>
+                        <a href="#!" class="collection-item" style="border-bottom: none !important;"> Todo</a>
+                    </div>
+                    <!--
+                    <div class="collection collection-1-2 with-header bordes-rigth-none ">
+                        <h5 href="#!" class="collection-item ">Ordenadores</h5>
+                        <a href="#!" class="collection-item " style="border-bottom: none !important;">Todo</a>
+                        <a href="#!" class="collection-item" style="border-bottom: none !important;">Samsung</a>
+                        <a href="#!" class="collection-item" style="border-bottom: none !important;"> Mac</a>
+                        <a href="#!" class="collection-item" style="border-bottom: none !important;"> hp</a>
+                        <a href="#!" class="collection-item" style="border-bottom: none !important;"> Otros</a>
+                        <a href="#!" class="collection-item" style="border-bottom: none !important;"> Thosiba</a>
+                        <a href="#!" class="collection-item" style="border-bottom: none !important;"> Thosiba</a>
+                        <h5 href="#!" class="collection-item bordes-top ">Blackberry</h5>
+                        <a href="#!" class="collection-item" style="border-bottom: none !important;"> Alimento</a>
+                        <a href="#!" class="collection-item" style="border-bottom: none !important;"> Ropas</a>
+                        <a href="#!" class="collection-item" style="border-bottom: none !important;"> Hogar</a>
+                    </div> 
+                   -->
+                  </div>
+                 
+
+
+                  <div class="collection collection-1-1 col col4 droppdown-content-3 bordes-bottom">
+                      <div class="collection collection-1-2">
+                          <a href="#!" class="collection-item " style="border-bottom: none !important;">Alquilar casa</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> En venta</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Hoteles</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Todo</a>
+                      </div>
+
+                  </div>
+
+
+                  <div class="collection collection-1-1 col col4 droppdown-content-5 bordes-bottom">
+                    <div class="collection collection-1-2">
+                        <a href="#!" class="collection-item " style="border-bottom: none !important;">Alquilar casa</a>
+                        <a href="#!" class="collection-item" style="border-bottom: none !important;"> En venta</a>
+                        <a href="#!" class="collection-item" style="border-bottom: none !important;"> Hoteles</a>
+                        <a href="#!" class="collection-item" style="border-bottom: none !important;"> Todo</a>
+                    </div>
+
+                </div>
+
+                  <div class="collection collection-1-1 col col4 droppdown-content-4 bordes-bottom">
+                      <div class="collection collection-1-2">
+                          <a href="#!" class="collection-item " style="border-bottom: none !important;">Zapatos</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Camisas</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Pantalones</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Joyas</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Tienda</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Todo</a>
+                      </div>
+                      <!-- 
+                      <div class="collection collection-1-2 with-header bordes-rigth-none">
+                          <h5 href="#!" class="collection-item ">Blackberry</h5>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Alimento</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Ropas</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Hogar</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Vivienda</a>
+                          <h5 href="#!" class="collection-item bordes-top ">Blackberry</h5>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Alimento</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Ropas</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Hogar</a>
+                      </div>
+                      <div class="collection collection-1-2 with-header bordes-rigth-none">
+                          <h5 href="#!" class="collection-item">Huawei</h5>
+                          <a href="#!" class="collection-item " style="border-bottom: none !important;">Telefonos</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Medicina</a>
+                          <h5 href="#!" class="collection-item bordes-top">Blackberry</h5>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Alimento</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Ropas</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Hogar</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Vivienda</a>
+                          <a href="#!" class="collection-item" style="border-bottom: none !important;"> Vivienda</a>
+                      </div>
+                      -->
+                  </div>
+
+
+             </div>
+
+          </div>
+
+ 
+          <div class="logotipo-input-sticky">
+              <form class="row esconder-input-seach esconder-input-seach">
+                <div class="caja-buscar">
+                  <div class=" ">
+                    <input id="icon_prefix" type="text" class="validate" placeholder="Que buscas ?">
+                  </div>
+                </div>
+              </form>
+          </div>
+
+          <div class="contenedor-link-sticky esconde-menu-iniciar-idiomas">
+              <div class="logotipo-link-sticky ">
+                  <a href="#">iniciar</a>
+                  <a href="#">idioma</a>
+              </div>
+          </div>
+
+
+      </div>
+  </div>    
+</section>
+
+
+
+<!-- carrousel de los mas visitados -->
+
+<section class="mas-visitados-iconos">
+  <div class="respon-mas-visitados-iconos container">
+    <div class="owl-carousel  carrosel-cat-menu-iconos ">
+      <div class="item  item-carrosel-categorias-menu-iconos ">
+          <a href="#" class="links-carrosel-pub-menu-iconos">
+              <div class="imgen-carrosel-pub-menu-iconos" >
+                  <img src="img/hogar-1.png" class="responsive-img" alt="">
+              </div>
+              <div class="titulo-carrousel-pub-menu-iconos">
+                  <p href="" class=" black-text text-darken-5">Casas</p>
+              </div>
+          </a>
+      </div>
+      <div class="item  item-carrosel-categorias-menu-iconos ">
+          <a href="#" class="links-carrosel-pub-menu-iconos">
+              <div class="imgen-carrosel-pub-menu-iconos" >
+                  <img src="img/camisa.png" class="responsive-img" alt="">
+              </div>
+              <div class="titulo-carrousel-pub-menu-iconos">
+                  <p href="" class=" black-text text-darken-5">Vestimenta</p>
+              </div>
+          </a>
+      </div>
+
+
+      <div class="item  item-carrosel-categorias-menu-iconos ">
+          <a href="#" class="links-carrosel-pub-menu-iconos">
+              <div class="imgen-carrosel-pub-menu-iconos" >
+                  <img src="img/iphone.png" class="responsive-img" alt="">
+              </div>
+              <div class="titulo-carrousel-pub-menu-iconos">
+                  <p href="" class=" black-text text-darken-5">Telefonos</p>
+              </div>
+          </a>
+      </div>
+      <div class="item  item-carrosel-categorias-menu-iconos ">
+          <a href="#" class="links-carrosel-pub-menu-iconos">
+              <div class="imgen-carrosel-pub-menu-iconos" >
+                  <img src="img/television.png" class="responsive-img" alt="">
+              </div>
+              <div class="titulo-carrousel-pub-menu-iconos">
+                  <p href="" class=" black-text text-darken-5">Multimedia</p>
+              </div>
+          </a>
+      </div>
+      <div class="item  item-carrosel-categorias-menu-iconos ">
+          <a href="#" class="links-carrosel-pub-menu-iconos">
+              <div class="imgen-carrosel-pub-menu-iconos" >
+                  <img src="img/atencion-al-cliente.png" class="responsive-img" alt="">
+              </div>
+              <div class="titulo-carrousel-pub-menu-iconos">
+                  <p href="" class=" black-text text-darken-5">Servicios</p>
+              </div>
+          </a>
+      </div>
+      <div class="item  item-carrosel-categorias-menu-iconos ">
+          <a href="#" class="links-carrosel-pub-menu-iconos">
+              <div class="imgen-carrosel-pub-menu-iconos" >
+                  <img src="img/dieta.png" class="responsive-img" alt="">
+              </div>
+              <div class="titulo-carrousel-pub-menu-iconos">
+                  <p href="" class=" black-text text-darken-5">Alimentos</p>
+              </div>
+          </a>
+      </div>
+</div>
+
+  </div>
+</section>
+<!-- FIN DE carrousel de los mas visitados-->
+
+
+
+
+
+
+
+
+<!-- side-nav -->
+<ul id="slide-out-nav" class="collapsible sidenav" style="z-index: 30000; width: 90% !important;">
+  <div class="buscar-con-side-nav" style="display: none;">
+    <form class="row">
+      <div class="caja-buscar">
+        <div class="input-field bloque-buscar">
+          <input id="icon_prefix" type="text" class="validate" placeholder="Que buscas ?">
+          <a href="" class="btn botton-busqueda prefix"><i class="material-icons ">search</i></a>
+        </div>
+      </div>
+    </form>
+  </div> 
+  <li>
+    <div class="collapsible-header avatar-collecion" >
+         <img src="img/iphone.png" >
+         Electronica
+    </div>
+    <div class="collapsible-body">
+    <div class="collection">
+      <a href="#!" class="collection-item blue-grey-text text-darken-4 " style="height:auto;">Telefonos</a>
+      <a href="#!" class="collection-item blue-grey-text text-darken-4 " style="height:auto;">Televisiones</a>
+      <a href="#!"class="collection-item blue-grey-text text-darken-4 " style="height:auto;">Material informatico</a>
+      <a href="#!"class="collection-item blue-grey-text text-darken-4 " style="height:auto;">Equipos de audiovision</a>
+      <a href="#!"class="collection-item blue-grey-text text-darken-4 " style="height:auto;">Videojuegos</a>
+      <a href="#!"class="collection-item blue-grey-text text-darken-4 " style="height:auto;">Material de telecomunicacion</a>
+      <a href="#!"class="collection-item blue-grey-text text-darken-4 " style="height:auto;"> Electrodomesticos</a>
+      <a href="#!"class="collection-item blue-grey-text text-darken-4 " style="height:auto;"> Todo</a>
+    </div> 
+  </div>
+  </li>
+  <li>
+    <div class="collapsible-header avatar-collecion">
+      <img src="img/hogar.png" >
+      Casas</div>
+    <div class="collapsible-body">
+    <div class="collection">
+      <a href="#!" class="collection-item blue-grey-text text-darken-4" style="height:auto;">Alquilar casa</a>
+      <a href="#!" class="collection-item blue-grey-text text-darken-4" style="height:auto;" > En venta</a>
+      <a href="#!" class="collection-item blue-grey-text text-darken-4" style="height:auto;" > Todo</a>
+    </div> 
+  </div>
+  </li>
+  <li>
+    <div class="collapsible-header avatar-collecion">
+      <img src="img/trabajar.png" >
+      Servicios</div>
+    <div class="collapsible-body">
+    <div class="collection">
+      <a href="#!" class="collection-item blue-grey-text text-darken-4" style="height:auto;">servicios el area de educacion</a>
+      <a href="#!" class="collection-item blue-grey-text text-darken-4" style="height:auto;" >servicios el area de construccion</a>
+      <a href="#!" class="collection-item blue-grey-text text-darken-4" style="height:auto;" >servicios el area de informatica</a>
+      <a href="#!" class="collection-item blue-grey-text text-darken-4" style="height:auto;" >servicios el area de publicidad</a>
+      <a href="#!" class="collection-item blue-grey-text text-darken-4" style="height:auto;" >Empleo</a>
+      <a href="#!" class="collection-item blue-grey-text text-darken-4" style="height:auto;" > Todo</a>
+    </div> 
+  </div>
+  </li>
+  <li>
+    <div class="collapsible-header avatar-collecion">
+      <img src="img/camisa.png" >
+      Coches</div>
+    <div class="collapsible-body">
+    <div class="collection">
+      <a href="#!" class="collection-item blue-grey-text text-darken-4" style="height:auto;">Coches en alquiler</a>
+      <a href="#!" class="collection-item blue-grey-text text-darken-4" style="height:auto;" >Coches en venta</a>
+      <a href="#!" class="collection-item blue-grey-text text-darken-4" style="height:auto;" > Todo</a>
+    </div> 
+  </div>
+  </li>
+  <li>
+    <div class="collapsible-header avatar-collecion">
+      <img src="img/camisa.png" >
+      Vestimenta</div>
+    <div class="collapsible-body">
+    <div class="collection">
+      <a href="#!" class="collection-item blue-grey-text text-darken-4" style="height:auto;">Zapatos</a>
+      <a href="#!" class="collection-item blue-grey-text text-darken-4" style="height:auto;" > Camisas</a>
+      <a href="#!" class="collection-item blue-grey-text text-darken-4" style="height:auto;" > Pantalones</a>
+      <a href="#!" class="collection-item blue-grey-text text-darken-4" style="height:auto;" > Joyas</a>
+      <a href="#!" class="collection-item blue-grey-text text-darken-4" style="height:auto;" > Todo</a>
+    </div> 
+  </div>
+  </li>
+
+</ul>
+<!-- fin de side-nav --> 
+
+
+
+
+
+
+
+
+<!-- targetas de nuevos productos-->
+<section class="nuevos-productos ">
+  <div class="respon-nuevos-productos container">
+      <div class="fila-de-targetas ">
+          <div class="targeta hoverable">
+            <div class="stock-productos">
+              <p>100</p>
+            </div>
+              <div class="contenedor-imagen">
+                <a href="#" class="imagen-targeta">
+                  <img src="img/0aa209f82b5bd4342d55341de0a61452.jpg" alt="">
+                </a>
+              </div>
+              <div class="descripcion-de-la-targeta">
+                <a href="#">Camisa  de europa....ver mas</a>
+                <p href="#" ><span class="precio">25.000 frcf</span></p>
+                <p href="#" class="visto"></p>
+              </div>
+          </div>
+          <div class="targeta hoverable">
+              <div class="stock-productos">
+                <p>100</p>
+              </div>
+              <div class="contenedor-imagen">
+                <a href="#" class="imagen-targeta">
+                  <img src="img/IMG-20210520-WA0000.jpg" alt="">
+                </a>
+              </div>
+              <div class="descripcion-de-la-targeta">
+                <a href="#">Camisa  de europa....ver mas</a>
+                <p href="#" ><span class="precio">25.000 frcf</span></p>
+                <p href="#" class="visto"></p>
+              </div>
+          </div>
+          <div class="targeta hoverable">
+              <div class="stock-productos">
+                <p>100</p>
+              </div>
+              <div class="contenedor-imagen">
+                <a href="#" class="imagen-targeta">
+                  <img src="img/ropa-galeria-4.png" alt="">
+                </a>
+              </div>
+              <div class="descripcion-de-la-targeta">
+                <a href="#">Camisa  de europa....ver mas</a>
+                <p href="#" ><span class="precio">100.000.000.000 xfa</span>  </p>
+                <p href="#" class="visto"></p>
+              </div>
+          </div>
+          <div class="targeta hoverable">
+              <div class="stock-productos">
+                <p>100</p>
+              </div>
+              <div class="contenedor-imagen">
+                <a href="#" class="imagen-targeta">
+                  <img src="img/hogar-galeria-3.png" alt="">
+                </a>
+              </div>
+              <div class="descripcion-de-la-targeta">
+                <a href="#">Camisa de  europa....ver mas</a>
+                <p href="#" ><span class="precio">25.000 frcf</span> </p>
+                <p href="#" class="visto"></p>
+              </div>
+          </div>
+          <div class="targeta hoverable">
+              <div class="stock-productos">
+                <p>100</p>
+              </div>
+              <div class="contenedor-imagen">
+                <a href="#" class="imagen-targeta">
+                  <img src="img/hogar-galeria-4.png" alt="">
+                </a>
+              </div>
+              <div class="descripcion-de-la-targeta">
+                <a href="#">Camisa europa....ver mas</a>
+                <p href="#" ><span class="precio">25.000 frcf</span> </p>
+                <p href="#" class="visto"></p>
+              </div>
+          </div>
+          <div class="targeta hoverable">
+            <div class="stock-productos">
+              <p>100</p>
+            </div>
+            <div class="contenedor-imagen">
+              <a href="#" class="imagen-targeta">
+                <img src="img/hogar-galeria-1.png" alt="">
+              </a>
+            </div>
+            <div class="descripcion-de-la-targeta">
+              <a href="#">Camisa  de europa....ver mas</a>
+              <p href="#" ><span class="precio">25.000 frcf</span></p>
+              <p href="#" class="visto"></p>
+            </div>
+        </div>
+        <div class="targeta hoverable">
+          <div class="stock-productos">
+            <p>100</p>
+          </div>
+          <div class="contenedor-imagen">
+            <a href="#" class="imagen-targeta">
+              <img src="img/zapatos.jpg" alt="">
+            </a>
+          </div>
+          <div class="descripcion-de-la-targeta">
+            <a href="#">Camisa  de europa....ver mas</a>
+            <p href="#" ><span class="precio">25.000 frcf</span></p>
+            <p href="#" class="visto"></p>
+          </div>
+      </div>
+        <div class="targeta hoverable">
+            <div class="stock-productos">
+              <p>100</p>
+            </div>
+            <div class="contenedor-imagen">
+              <a href="#" class="imagen-targeta">
+                <img src="img/ropa-galeria-4.png" alt="">
+              </a>
+            </div>
+            <div class="descripcion-de-la-targeta">
+              <a href="#">Camisa  de europa....ver mas</a>
+              <p href="#" ><span class="precio">25.000 frcf</span>  </p>
+              <p href="#" class="visto"></p>
+            </div>
+        </div>
+        <div class="targeta hoverable">
+            <div class="stock-productos">
+              <p>100</p>
+            </div>
+            <div class="contenedor-imagen">
+              <a href="#" class="imagen-targeta">
+                <img src="img/hogar-galeria-3.png" alt="">
+              </a>
+            </div>
+            <div class="descripcion-de-la-targeta">
+              <a href="#">Camisa de  europa....ver mas</a>
+              <p href="#" ><span class="precio">25.000 frcf</span> </p>
+              <p href="#" class="visto"></p>
+            </div>
+        </div>
+        <div class="targeta hoverable">
+          <div class="stock-productos">
+            <p>100</p>
+          </div>
+          <div class="contenedor-imagen">
+            <a href="#" class="imagen-targeta">
+              <img src="img/televisiones.png" alt="">
+            </a>
+          </div>
+          <div class="descripcion-de-la-targeta">
+            <a href="#">Camisa de  europa....ver mas</a>
+            <p href="#" ><span class="precio">25.000 frcf</span> </p>
+            <p href="#" class="visto"></p>
+          </div>
+      </div>
+        <div class="targeta hoverable">
+            <div class="stock-productos">
+              <p>100</p>
+            </div>
+            <div class="contenedor-imagen">
+              <a href="#" class="imagen-targeta">
+                <img src="img/hogar-galeria-4.png" alt="">
+              </a>
+            </div>
+            <div class="descripcion-de-la-targeta">
+              <a href="#">Camisa europa....ver mas</a>
+              <p href="#" ><span class="precio">25.000 frcf</span> </p>
+              <p href="#" class="visto"></p>
+            </div>
+        </div>
+      </div>
+  </div>
+</section>
+<!-- FIN DE targetas de nuevos productos-->
+
+
+
+
+
+<section style="height: 200px;">
+
+</section>
+
+
+
+
+
+
+
+
+<!--FOOTER -->
+
+<section class="contenedor-foorter" >
+  <footer class="page-footer">
+      <div class="redes-sociles-footer">
+          <div class="barra-de-redes-sociales-footer">
+            <div class = "contenedor-de-sociales-footer">
+              <a class="btn-floating btn-social-footer btn-smal waves-effect waves-light  "><i class="icon-whatsapp"></i></a>
+              <a class="btn-floating btn-social-footer btn-smal waves-effect waves-light "><i class="icon-facebook"></i></a>
+              <a class="btn-floating btn-social-footer btn-smal waves-effect waves-light "><i class="icon-twitter"></i></a>
+              <a  href="" target="blank" ><span class="separacion-footer">||</span></a>
+              <a class="btn-floating btn-social-footer btn-smal waves-effect waves-light"><i class="icon-phone"></i></a>
+              <a class="btn-floating btn-social-footer btn-smal waves-effect waves-light"><i class="icon-envelop"></i></a>
+              <a class="btn-floating btn-social-footer btn-smal waves-effect waves-light"><i class="icon-location2"></i></a>
+            </div>
+          </div>
+      </div>
+      <div class="informacion-footer-1">
+          <a href="#"><span>contactar soporte</span></a>
+          <span class="barra-de-separacion-footer">|</span>				
+          <a href="#"><span>ayuda</span></a>
+          <span class="barra-de-separacion-footer">|</span>
+          <a href="#"><span>servicios</span></a>
+          <span class="barra-de-separacion-footer">|</span>	
+          <a href="#"><span>Hola EG</span></a>
+      </div>
+      <div class="informacion-footer-2">
+          <p>copyright @ 2020</p>
+      </div>
+    </footer>
+</section>
+
+
+<!-- FIN DE FOOTER -->
+
+
+
+
+
+<!-- MENU-O-NAV-PARA DISPOSITIVOS PEQUENOS -->
+<section class="container-fluid contenedor-fluido-abajo">
+  <div class="contenedor-abajo container">
+    <div class="contenedor-abajo-link">
+      <a href="#" class="link-menu-abajo">
+        <i class="material-icons">home</i>
+      </a>
+    </div>
+    <div class="contenedor-abajo-link">
+      <a  href="#" data-target="slide-out-nav" class="sidenav-trigger link-menu-abajo mostra">
+        <i class="material-icons">format_list_bulleted</i>
+      </a>
+    </div>
+    <div class="contenedor-abajo-link">
+      <a href="#" class="link-menu-abajo">
+        <i class="material-icons">person</i>
+      </a>
+    </div>
+    <div class="contenedor-abajo-link">
+      <a href="#" class="link-menu-abajo">
+        <i class="material-icons">add_shopping_cart</i>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- FIN-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- script materialize -->
+
+<script>
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+    })
+    $(document).ready(function(){
+    $('.collapsible').collapsible();
+    });
+    $(document).ready(function(){
+    $('.tooltipped').tooltip();
+    });
+    $(document).ready(function(){
+    $('.parallax').parallax();
+    });
+    $(document).ready(function(){
+    $('.parallax').parallax();
+    });
+
+</script>
+
+<!-- fin des script materialize -->
+
+
+<!-- script carrousel -->
+
+<script src="carrousel/owl.carousel.js"></script>
+    <script>
+        $(".parallax-container").css({"height" :($(window).height() -70) + "px"});
+        $(document).ready(function(){
+          var offset = 250;
+          var duration = 250;
+          var duration_top = 500
+          $(window).scroll(function(){
+            if($(this).scrollTop() > offset){
+              $('.scrolltop').fadeIn(duration);
+            }
+            else{
+              $('.scrolltop').fadeOut(duration);
+            }
+          });
+
+          $('.scrolltop').click(function(){
+            $('body,html').animate({scrollTop: '0px'},duration_top);
+          })
+        })  
+        
+        var owl = $('.carrosel-cat');
+        owl.owlCarousel({
+            loop:true,
+            items:3,
+            dots:false,
+            autoplay:true,
+            autoplayTimeout:4000,
+            autoplayHoverPause:true, 
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:3,
+                    
+                },
+                500:{
+                    items:4,
+                    
+                },
+                1000:{
+                    items:3,
+                
+                }
+                ,
+                1500:{
+                    items:3,
+                
+                }
+            }
+        });
+
+        var owl = $('.carrosel-cat-menu-iconos');
+        owl.owlCarousel({
+            loop:true,
+            items:3,
+            dots:false,
+            autoplay:false,
+            autoplayHoverPause:false, 
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:4,
+                    
+                },
+                285:{
+                    items:5,
+                    
+                },
+                500:{
+                    items:5,
+                    
+                },
+                600:{
+                    items:6,
+                    
+                },
+                800:{
+                    items:7,
+                    
+                },
+                1000:{
+                    items:7,
+                
+                }
+                ,
+                1500:{
+                    items:7,
+                
+                }
+            }
+        });
+
+        var owl = $('.carrosel-cat-menu');
+        owl.owlCarousel({
+            loop:true,
+            items:3,
+            dots:false,
+            autoplay:true,
+            autoplayHoverPause:false, 
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:2,
+                    
+                },
+                450:{
+                    items:2,
+                    
+                },
+                500:{
+                    items:3,
+                    
+                },
+                680:{
+                    items:3,
+                    
+                },
+                800:{
+                    items:4,
+                    
+                },
+                1000:{
+                    items:4,
+                
+                }
+                ,
+                1500:{
+                    items:4,
+                
+                }
+            }
+        });
+
+
+
+        var owll = $('.carrosel-pub');
+        owll.owlCarousel({
+            loop:true,
+            items:1,
+            dots:false,
+            autoplay:true,
+            autoplayTimeout:4000,
+            autoplayHoverPause:true, 
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1,
+                    
+                },
+                600:{
+                    items:1,
+                    
+                },
+                1000:{
+                    items:1,
+                
+                }
+                ,
+                1500:{
+                    items:1,
+                
+                }
+            }
+        });
+    </script>
+
+<!-- findes script carrousel -->
+
+
+<!-- script jquery -->
+<script src="cssjs/js/script-ipro.js"></script>
+
+<script>
+    $(".mostrar").click(()=>{
+      $(".section-dispositivos-mobile").addClass('ver-section-dispositivos-mobile');
+    })
+    $(".salir").click(()=>{
+    $(".section-dispositivos-mobile").removeClass('ver-section-dispositivos-mobile');
+  })
+    $(".sectio-dispositivos-mobile").css({"height" :$(window).height() + "px"});
+    var contenido = $('.droppdown-content-2') ;
+    var contenido3 = $('.droppdown-content-3') ;
+    var contenido4 = $('.droppdown-content-4') ;
+    var contenido5 = $('.droppdown-content-5') ;
+    var drop_cont = $('.droppdown-content-2') ;
+    var mouse_lever =
+    $(document).ready(()=>{
+        $('.droppdown-2').mouseover(()=>{contenido.addClass('blog')}) ;
+        $('.droppdown-2').mouseleave(()=>{contenido.removeClass('blog')}) ;
+        $('.droppdown-content-2').mouseover(()=>{$('.droppdown-2').addClass('dropaColor')}) ;
+        $('.droppdown-content-2').mouseleave(()=>{$('.droppdown-2').removeClass('dropaColor')}) ;
+
+        $('.droppdown-5').mouseover(()=>{contenido5.addClass('blog')}) ;
+        $('.droppdown-5').mouseleave(()=>{contenido5.removeClass('blog')}) ;
+        $('.droppdown-content-5').mouseover(()=>{$('.droppdown-5').addClass('dropaColor')}) ;
+        $('.droppdown-content-5').mouseleave(()=>{$('.droppdown-5').removeClass('dropaColor')}) ;
+
+
+        $('.droppdown-3').mouseover(()=>{contenido3.addClass('blog')}) ;
+        $('.droppdown-3').mouseleave(()=>{contenido3.removeClass('blog')}) ;
+        $('.droppdown-content-3').mouseover(()=>{$('.droppdown-3').addClass('dropaColor')}) ;
+        $('.droppdown-content-3').mouseleave(()=>{$('.droppdown-3').removeClass('dropaColor')}) ;
+
+        $('.droppdown-4').mouseover(()=>{contenido4.addClass('blog')}) ;
+        $('.droppdown-4').mouseleave(()=>{contenido4.removeClass('blog')}) ;
+        $('.droppdown-content-4').mouseover(()=>{$('.droppdown-4').addClass('dropaColor')}) ;
+        $('.droppdown-content-4').mouseleave(()=>{$('.droppdown-4').removeClass('dropaColor')}) ;
+    });
+
+    $(document).ready(()=>{
+      contenido.mouseover(()=>{contenido.addClass('blog')})
+      contenido.mouseleave(()=>{contenido.removeClass('blog')})
+      contenido3.mouseover(()=>{ contenido3.addClass('blog') ; contenido.removeClass('blog')})
+      contenido3.mouseleave(()=>{contenido3.removeClass('blog')})
+      contenido4.mouseover(()=>{ contenido4.addClass('blog') ; contenido.removeClass('blog')})
+      contenido4.mouseleave(()=>{contenido4.removeClass('blog')})
+      contenido5.mouseover(()=>{ contenido5.addClass('blog') ; contenido.removeClass('blog')})
+      contenido5.mouseleave(()=>{contenido5.removeClass('blog')})
+    });
+ 
+</script>
+<!--fin des script jquery -->
+ 
+
+
+<script>
+  //-------------script jquery-------------------------------------------------
+$(document).ready(function(){
+    var flat = false;
+    var scroll;
+    $(window).scroll(function(){
+        scroll = $(window).scrollTop();
+/*
+        if (scroll > 700) {
+           
+            $('.barra-de-nav-scrollTop').removeClass('display-bottom') 			
+        }else{
+            $('.barra-de-nav-scrollTop').addClass('display-bottom')           
+        }
+*/
+    });
+});
+//-------------fin script jquery-------------------------------------------------
+</script>
+
+</body>
+</html>

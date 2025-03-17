@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- les styles -->
+  <link rel="stylesheet" href="cssjs/css/materialize.min.css">
+  <link rel="stylesheet" href="cssjs/css/materialize-icons.css">
+  <link rel="stylesheet" href="cssjs/icon/style.css">
+  <link rel="stylesheet" href="cssjs/css/estilos.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Play&family=Saira+Condensed&display=swap" rel="stylesheet">
+
+
+  <!-- fin styles -->
+
+  <!-- javascript -->
+  <script src="cssjs/js/jquery-3.5.1.min.js"></script>
+  <script src="cssjs/js/materialize.min.js"></script>
+  <script src="cssjs/js/axios.min.js"></script>
+
+  <!-- fin javascript -->
+  <style>
+    /*<pre><%= users %></pre>*/
+    .containerTable,
+    .containerSearch {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .Table {
+      width: 80%;
+    }
+
+    .Search {
+      width: 500px;
+      margin-bottom: 100px;
+      margin-top: 50px;
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  <pre>
+
+</pre>
+
+  <div class="containerSearch">
+    <div class="Search ">
+      <nav class="grey darken-4">
+        <div class="nav-wrapper">
+          <form>
+            <div class="input-field">
+              <input id="search" type="search" required>
+              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+          </form>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="containerTable">
+    <div class="Table">
+      <table class="striped responsive-table ">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <Th>Genero</Th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Paiz</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% for(var i=0; i < users.length; i++) { %>
+
+            <tr>
+              <td>
+                <%= users[i].nombre %>
+              </td>
+              <td>
+                <%= users[i].genero %>
+              </td>
+              <td>
+                <%= users[i].email %>
+              </td>
+              <td>
+                <%= users[i].contact %>
+              </td>
+              <td>
+                <%= users[i].paiz %>
+              </td>
+
+              <td>
+                <a href="" onclick='VerProduct("<%= users[i]._id %>")' class="">ver productos</a>
+                <a href="" onclick='Borrar("<%= users[i]._id %>")' class="">Eliminar user</a>
+                <a href="" onclick='Bloquear("<%= users[i]._id %>")' class="">Bloquear user</a>
+                <a href="" onclick='Actualizar("<%= users[i]._id %>")' class="">actualizar user</a>
+              </td>
+
+            </tr>
+
+            <% } %>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <div class="containerSpinner">
+    <div class="lds-roller" id="lds-roller">
+
+    </div>
+  </div>
+  <script>
+    function VerProduct(id) {
+      console.log("verProduct", window.location.href.split("/")[3])
+    }
+    async function Borrar(id) {
+
+      if (id) {
+        document.getElementById('lds-roller').innerHTML += '<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>';
+        const data = await axios.post("/borrar_user", {
+          "id": id,
+          "idActual":window.location.href.split("/")[3]
+        })
+
+        if (data.data.menss === "borrado") {
+          document.getElementById('lds-roller').innerHTML = '';
+
+          M.toast({ html: data.data })
+
+        } else {
+          document.getElementById('lds-roller').innerHTML = '';
+          location.href = `http://localhost:5000/${window.location.href.split("/")[3]}`
+
+        }
+      } else {
+        document.getElementById('lds-roller').innerHTML = '';
+        M.toast({ html: "hay un problema" })
+      }
+      console.log("borrar", id)
+    }
+    function Bloquear(id) {
+      console.log("bloquear", id)
+    }
+    function Actualizar(id) {
+      console.log("actualizar", window.location.href.split("/")[3])
+    }
+  </script>
+</body>
+
+</html>
