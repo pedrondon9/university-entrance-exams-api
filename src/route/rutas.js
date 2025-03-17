@@ -94,7 +94,7 @@ route.post('/registro_post', async (req, res) => {
         //newUser.paiz = paiz
         //newUser.genero = genero
         //newUser.role = role
-        newUser.estado = false
+        newUser.estado = true
         newUser.token = newUser["_id"]
 
         /*************************************** */
@@ -117,38 +117,6 @@ route.post('/registro_post', async (req, res) => {
         //Para enviar el link de verificacion de email 
         /******************************************* */
         //<img src=${linkImg} alt=''>
-        const correo = email
-        const linkImg = 'https://res.cloudinary.com/mumbe/image/upload/c_thumb,w_200,g_face/v1639482203/kisspng-shopping-cart-computer-icons-online-shopping-buy-5abedd9c448d14.1345528515224580122808_fnfo0p.png'
-        const linkConfir = token
-        const html = "<head><meta charset='UTF-8'><meta http-equiv='X-UA-Compatible' content='IE=edge'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>Document</title></head>"
-        const html1 = "<body>" + `<p style='text-align: center;'>Hola ${usuario} , bienvenido a selectividad.site para poder activar tu cuenta haz click en el siguiente boton</p>`
-        const html2 = `<div  style='display: flex;width: 100%;height: 100px;justify-content: center;align-items: center;'><a href = '${"https://selectividad.site/#/confirm/" + linkConfir}'style='font-size: 20px;' >Has click para verificar tu cuenta !</a></div>`
-        const html3 = `<div style='width: 100%;display: flex;justify-content: center;'></div>`
-        const html4 = "<h3 style='font-size: 17px;font-weight: 400;text-align: center;color: #212121 ;'></h3>" + "<a style='text-align: center;' href='https://mumbx.com'>desarrollado por mumbeX software developer</a>" + "</body>"
-
-        let transporter = nodemailer.createTransport({
-          host: "smtp.gmail.com",
-          port: 465,
-          secure: true, // 
-          auth: {
-            user: "pedronnd689@gmail.com", // 
-            pass: emailPassworld, // 
-          },
-        });
-
-        try {
-          const resEmail = await transporter.sendMail({
-            from: '"selectividad.site" <pedronnd689@gmail.com>', //el email que va emitar
-            to: correo, // lista de email que van a resibir
-            subject: "Activacion de cuenta", //
-            text: "hola", // 
-            html: html + html1 + html2 + html3 + html4, // html body
-          });
-          console.log(resEmail)
-        } catch {
-          res.json("el correo no existe")
-        }
-
 
 
         /******* fin para enviar  link */
@@ -160,7 +128,7 @@ route.post('/registro_post', async (req, res) => {
         console.log(datosUser)
         /************************** */
 
-        res.json("activa tu cuenta mediante el link enviado en tu correo")
+        res.json("La cuenta ha sido creada con exito")
       } else {
         res.json("Comprueba que has rellenado todos los campos")
       }
