@@ -1,9 +1,5 @@
 const mongoose = require("mongoose")
-const mongos = 'mongodb://localhost/select' //process.env.MONGODB_URI_GNOP;
-
-
-
-
+const mongos = process.env.DB //process.env.MONGODB_URI_GNOP;
 
 mongoose.connect( mongos,{ useUnifiedTopology: true, useNewUrlParser: true })
   .then(db => console.log("db is conected"))

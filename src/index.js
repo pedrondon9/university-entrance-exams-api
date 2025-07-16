@@ -12,6 +12,7 @@ const session = require('express-session');
 const passport = require('passport');
 const genl_routes = require('./route/public_route').public;
 const autho_routes = require("./route/auth_route").authorization
+const secretToken = process.env.SESSION_SECRET
 
 
 const app = express()
@@ -28,8 +29,8 @@ require('./passport/local-auth');
 //subir archivos con multer
 const storage = multer.diskStorage({
     destination: path.join(__dirname, "public/pdf"),
-    filename:(req,file,cb)=>{
-        cb(null,uuidv4() + `${path.extname(file.originalname).toLocaleLowerCase()?path.extname(file.originalname).toLocaleLowerCase():".png"}`);
+    filename: (req, file, cb) => {
+        cb(null, uuidv4() + `${path.extname(file.originalname).toLocaleLowerCase() ? path.extname(file.originalname).toLocaleLowerCase() : ".png"}`);
     }
 })
 
@@ -56,41 +57,69 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use(morgan("dev"))
 
-app.use(express.json({limit: '50mb'}))
+app.use(express.json({ limit: '50mb' }))
 
-app.use(cors())
+app.use(cors({
+    origin: "http://localhost:3000", // dirección del frontend
+    credentials: true
+}))
 
 app.use(passport.initialize());
 
 app.use(passport.session());
 
-//app.use(session({
-//    secret: 'mysecretsession',
-//    resave: false,
-//    saveUninitialized: false
-//}));
+
+//app.use(
+//    session({
+//    secret: process.env.SESSION_SECRET, 
+//    resave: true,
+//    saveUninitialized:true,
+//    cookie: {
+//        secure: true, // HTTPS only
+//        httpOnly: true,
+//        maxAge: 3 * 60 * 1000//24 * 60 * 60 * 1000 // 1 día
+//    }
+//})
+//);
 
 
 
-app.use("/auth/*", function auth(req, res, next) {
-    if (req.session.authorization) {
-        let token = req.session.authorization['accessToken']; // Access Token
+app.use("/customer",
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: true,
+        saveUninitialized: true,
+    }))
 
-        // Verify JWT token for user authentication
-        jwt.verify(token, "access", (err, user) => {
-            
-            if (!err) {
-                req.user = user; // Set authenticated user data on the request object
-                next(); // Proceed to the next middleware
-            } else {
-                return res.status(403).json({ mens: "Por favor registrate o inicia sesion" }); // Return error if token verification fails
-            }
-        });
 
-        // Return error if no access token is found in the session
-    } else {
-        return res.status(403).json({ mens: "Por favor registrate o inicia sesion" }); // Return error if token verification fails
+app.use("/customer/auth/*", function auth(req, res, next) {
+    console.log(req.headers)
+    try {
+        if (req.headers["x-access-token"]) {
+              let token = req.headers["x-access-token"]; // Access Token
+
+            // Verify JWT token for user authentication
+            jwt.verify(token, secretToken, (err, user) => {
+
+                if (!err) {
+                    req.user = user; // Set authenticated user data on the request object
+                    next(); // Proceed to the next middleware
+                } else {
+                    return res.status(403).json({ mens: "Por favor registrate o inicia sesion" }); // Return error if token verification fails
+                }
+            });
+
+            // Return error if no access token is found in the session
+        } else {
+            return res.status(403).json({ mens: "Por favor registrate o inicia sesion 55" }); // Return error if token verification fails
+        }
+    } catch (error) {
+
+        console.log(error)
+
+        return res.status(403).json({ mens: "Por favor registrate o inicia sesion 99" }); // Return error if token verification fails
     }
+
 });
 
 
@@ -100,12 +129,12 @@ app.use(multer({
     storage,
     dest: path.join(__dirname, "public/pdf")
 
-}).fields([{ name: "pdf" },{ name: "imagen1" }, { name: "imagen2" }, { name: "imagen3" }, { name: "imagen4" }]))
+}).fields([{ name: "pdf" }, { name: "imagen1" }, { name: "imagen2" }, { name: "imagen3" }, { name: "imagen4" }]))
 
 
 //route
-app.use("/auth", autho_routes);
-app.use("/", genl_routes);
+app.use("/customer/auth", autho_routes);
+app.use("/customer/", genl_routes);
 
 
 

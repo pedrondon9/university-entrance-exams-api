@@ -15,7 +15,7 @@ cloudinary.config({
 })
 
 //crear el secret del token
-const secretToken = "1234GDGjbfsdsknfjksf134ewewrwrrwr"
+const secretToken = process.env.SESSION_SECRET
 
 //modelos
 
@@ -230,6 +230,7 @@ auth_users.post("/addRespComentResp", async (req, res) => {
 /********************************************** */
 auth_users.post("/addExamen", async (req, res) => {
   const { body, method } = req
+  console.log(body)
   const { userName, userId, userPhoto, año, mes, face, materia, numComent, estado } = body;
   var examenList = await UploadExamen.findOne({ 'materia': materia })
   if (examenList) {//probar si la materia ya existe en la base de datos
