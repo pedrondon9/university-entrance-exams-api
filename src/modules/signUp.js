@@ -1,3 +1,4 @@
+const secretToken = process.env.SESSION_SECRET;
 const express = require("express")
 
 const bcrypt = require("bcrypt")
@@ -6,105 +7,55 @@ const jwt = require("jsonwebtoken")
 //configurar cloudinary
 
 
-//crear el secret del token
-const secretToken = process.env.SESSION_SECRET
 
 //modelos
 
-
-const User = require("../modelos/userRegistro")
-
+const User = require("../modelos/userRegistro");
+const SendEmail = require("./sendEmail");
+const {  generateAuthTokenRegister } = require("./authRegister");
 
 const signUpUser = async (req, res) => {
     try {
-        console.log(req.body)
-        const email = req.body.email
-        const usuario = req.body.nombre
-        //const paiz = req.body.paiz
-        //const genero = req.body.genero
+        console.log(req.body);
+        const email = req.body.email;
+        const usuario = req.body.fullname
 
-        if (req.body.role) {
-            var role = req.body.role
-        } else {
-            var role = "user"
-        }
+        const role = req.body.role || "user";
+        const contact = req.body.contact || "";
+        const password = req.body.password;
 
-        if (req.body.contact) {
-            var contact = req.body.contact
-        } else {
-            var contact = ""
-        }
-        const password = req.body.contrasena
-        const validar = email && usuario && password
+        const validar = email && usuario && password;
 
-        const user = await User.findOne({ 'email': email })//verificar si el email existe antes del nuevo registro para que no se dublique
-        console.log(user)
+        const user = await User.findOne({ email });
+        console.log(user);
+
         if (!user) {
-
             if (validar) {
 
-                const newUser = new User();//el modelo de registro de usuarios
+                const token = await generateAuthTokenRegister(req.body)
 
-                /************************* */
-                //encriptando la contraseña
-                /****************************************** */
-                const passwortEcryp = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
+                console.log(user, "user",token, "token");
+                const verificationLink = `http://localhost:3000/${token}`;
+                const constentEmail = `<p>Hi ${usuario},</p>
+                     <p>Please verify your email by clicking the link below:</p>
+                     <a href="${verificationLink}">Verify Email</a>`;
 
-                /******************************* */
-                //Asignando valores a cada variable del modelo de registro de usuarios para su posterior almacenamiento en la base de datos
-                /******************************************************************* */
-                newUser.nombre = req.body.nombre
-                newUser.email = email
-                newUser.contact = contact
-                newUser.password = passwortEcryp
-                //newUser.paiz = paiz
-                //newUser.genero = genero
-                //newUser.role = role
-                newUser.estado = true
+                await SendEmail(email, constentEmail);
 
-                /*************************************** */
-
-
-
-
-                //***********************/
-                //crear el token
-                /************************ */
-                const token = jwt.sign({
-                    exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 30,
-                    user: usuario,
-                    id: newUser["_id"],
-                }, secretToken)
-
-                //console.log(token)
-
-                /***********************************/
-                //Para enviar el link de verificacion de email 
-                /******************************************* */
-                //<img src=${linkImg} alt=''>
-
-
-                /******* fin para enviar  link */
-                /******************************************* */
-                /*******************/
-                //guardar datos 
-                /************************ */
-                const datosUser = await newUser.save();
-                console.log(datosUser)
-                /************************** */
-
-                res.status(200).json("La cuenta ha sido creada con exito")
+                res.status(200).json({ message: "La cuenta ha sido creada con exito, activa tu cuenta atravez del link que hemos enviado en tu correo", success: true, token:token });
             } else {
-                res.status(403).json("Comprueba que has rellenado todos los campos")
+                res.status(403).json({ message: "Comprueba que has rellenado todos los campos", success: false });
             }
-
         } else {
-            res.status(403).json("el usuario ya existe")
+            res.status(403).json({ message: "El usuario ya existe", success: false });
         }
     } catch (error) {
-        console.log(error)
-        res.status(503).json("hay un problema")
+        console.log(error);
+        res.status(403).json({ message: "Hay un problema", success: false });
     }
-}
+};
+
+
+
 
 module.exports = signUpUser

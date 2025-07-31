@@ -36,7 +36,8 @@ const storage = multer.diskStorage({
 
 
 //routing
-const route = require("./route/rutas")
+const route = require("./route/rutas");
+const { cleanupUnverifiedUsers } = require('./modules/cleanUserData');
 
 
 
@@ -68,19 +69,6 @@ app.use(passport.initialize());
 
 app.use(passport.session());
 
-
-//app.use(
-//    session({
-//    secret: process.env.SESSION_SECRET, 
-//    resave: true,
-//    saveUninitialized:true,
-//    cookie: {
-//        secure: true, // HTTPS only
-//        httpOnly: true,
-//        maxAge: 3 * 60 * 1000//24 * 60 * 60 * 1000 // 1 día
-//    }
-//})
-//);
 
 
 
@@ -142,6 +130,10 @@ app.use("/customer/", genl_routes);
 
 //static
 app.use(express.static(path.join(__dirname, "public")))
+
+
+//cleanupUnverifiedUsers()
+
 
 
 

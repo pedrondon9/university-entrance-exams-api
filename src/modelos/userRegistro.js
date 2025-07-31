@@ -5,15 +5,17 @@ const bcrypt = require("bcrypt")
 //registrar usuario
 
 const User =  new Schema({
-    nombre:{type:String},
+    fullname:{type:String},
     email:{type:String},
     password:{type:String},
-    estado:{type:Boolean},
+    state:{type:Boolean},
     token:{type:String},
     contact:{type:String},
     paiz:{type:String},
-    genero:{type:String},
+    sex:{type:String},
     role:{type:String},
+    token:{type:String},
+    isVerified:{type:Boolean}
 });
 
 User.methods.encryptPassword = (password) => {

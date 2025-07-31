@@ -20,6 +20,7 @@ const ResponseResponse = require("../modelos/responseRespon")
 const { Console } = require("console")
 const { nextTick } = require("process")
 const ExamenDatos = require("../modelos/examenDatos")
+const { verifyToken } = require("../modules/verifyToken");
 
 
 //POST DE REGISTRO DE USUARIOS
@@ -31,9 +32,17 @@ public_users.post('/registro_post', async (req, res) => {
 /********** */
 /******************************************************** */
 
+//POST RUTA PARA REENVIAR EMAIL DE VERIFICACION
+const ResendEmail = require('../modules/resendEmail')
+public_users.post('/resend-email',verifyToken, async (req, res) => {
+    await ResendEmail(req, res)
+})
+
+/********** */
+/******************************************************** */
 
 //POST DE LOGEO DE USUARIOS
-const Login = require("../modules/singIn")
+const Login = require("../modules/singIn");
 public_users.post('/login_post', async (req, res) => {
     await Login(req, res)
 })
