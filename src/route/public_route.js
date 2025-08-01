@@ -20,7 +20,7 @@ const ResponseResponse = require("../modelos/responseRespon")
 const { Console } = require("console")
 const { nextTick } = require("process")
 const ExamenDatos = require("../modelos/examenDatos")
-const { verifyToken } = require("../modules/verifyToken");
+const { verifyToken, verifyTokenRegister } = require("../modules/verifyToken");
 
 
 //POST DE REGISTRO DE USUARIOS
@@ -32,10 +32,17 @@ public_users.post('/registro_post', async (req, res) => {
 /********** */
 /******************************************************** */
 
-//POST RUTA PARA REENVIAR EMAIL DE VERIFICACION
+//POST DE ENVIO DE EMAILS
 const ResendEmail = require('../modules/resendEmail')
-public_users.post('/resend-email',verifyToken, async (req, res) => {
+public_users.post('/resend-email',verifyTokenRegister, async (req, res) => {
     await ResendEmail(req, res)
+})
+
+
+//POST RUTA PARA CAMBIAR LA CONTRASEÑA
+const changePassword = require('../modules/changePassword')
+public_users.post('/change-pasword', async (req, res) => {
+    await changePassword(req, res)
 })
 
 /********** */
@@ -50,6 +57,14 @@ public_users.post('/login_post', async (req, res) => {
 /********** */
 /******************************************************** */
 
+//POST PARA ACTIVAR LA CUENTA
+const ActiveCount = require("../modules/active.count");
+public_users.post('/active-count',verifyTokenRegister, async (req, res) => {
+    await ActiveCount(req, res)
+})
+
+/********** */
+/******************************************************** */
 
 //RUTA PARA CONFIRMAR Y VALIDAR EMAIL
 
@@ -62,7 +77,7 @@ public_users.post("/confirmar", async (req, res) => {
         const token = await User.findOne({ token: userData.id });
         console.log(token)
         if (token) {
-            var estado = { "$set": { 'estado': true } };
+            var estado = { "$set": { 'tado': true } };
             const datos = await User.findByIdAndUpdate({ "_id": token._id }, estado)
             if (datos) {
                 console.log(datos, "datos", datos._id, "gggggggggggggggggggggggggggggg")

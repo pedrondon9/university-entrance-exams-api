@@ -3,7 +3,6 @@ const Users = require("../modelos/userRegistro");
 const bcrypt = require("bcrypt")
 
 
-
 const verifyUsers = async (tokenData,token,res) => {
     if (!tokenData) return res.status(405).json({ verify: false, message: '' })
 

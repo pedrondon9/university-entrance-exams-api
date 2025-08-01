@@ -12,37 +12,34 @@ const jwt = require("jsonwebtoken")
 
 const User = require("../modelos/userRegistro");
 const SendEmail = require("./sendEmail");
-const {  generateAuthTokenRegister } = require("./authRegister");
+const { generateAuthTokenRegister } = require("./generateToken");
 
 const signUpUser = async (req, res) => {
     try {
-        console.log(req.body);
-        const email = req.body.email;
-        const usuario = req.body.fullname
+
+        const { fullname, password, email } = req.body;
 
         const role = req.body.role || "user";
         const contact = req.body.contact || "";
-        const password = req.body.password;
 
-        const validar = email && usuario && password;
 
-        const user = await User.findOne({ email });
-        console.log(user);
+        //const user = await User.findOne({ email });
 
-        if (!user) {
-            if (validar) {
+
+        if (!false) {
+            if (email && fullname && password) {
 
                 const token = await generateAuthTokenRegister(req.body)
 
-                console.log(user, "user",token, "token");
-                const verificationLink = `http://localhost:3000/${token}`;
-                const constentEmail = `<p>Hi ${usuario},</p>
+                //console.log(user, "user", token, "token");
+                const verificationLink = `http://localhost:3000/#/confirm/${token}`;
+                const constentEmail = `<p>Hi ${fullname},</p>
                      <p>Please verify your email by clicking the link below:</p>
                      <a href="${verificationLink}">Verify Email</a>`;
 
                 await SendEmail(email, constentEmail);
 
-                res.status(200).json({ message: "La cuenta ha sido creada con exito, activa tu cuenta atravez del link que hemos enviado en tu correo", success: true, token:token });
+                res.status(200).json({ message: "La cuenta ha sido creada con exito, activa tu cuenta atravez del link que hemos enviado en tu correo", success: true, token: token });
             } else {
                 res.status(403).json({ message: "Comprueba que has rellenado todos los campos", success: false });
             }
