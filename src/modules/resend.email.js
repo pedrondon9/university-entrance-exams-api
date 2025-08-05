@@ -6,7 +6,7 @@ async function ResendEmail(req, res) {
 
     try {
 
-        const verificationLink = `http://localhost:3000/${token}`;        
+        const verificationLink = `https://selectividad.mumbx.com/#/${token}`;        
         const constentEmail = `<p>Hi ${user.fullname},</p>
              <p>Porfavor verifica tu correo haciendo clik en el siguiente enlace:</p>
              <a href="${verificationLink}">Verifica Correo</a>`;
