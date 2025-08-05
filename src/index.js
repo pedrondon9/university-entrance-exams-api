@@ -1,7 +1,6 @@
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
-const jwt = require('jsonwebtoken');
 const express = require("express")
 const morgan = require("morgan")
 const path = require("path")
@@ -12,21 +11,15 @@ const session = require('express-session');
 const passport = require('passport');
 const genl_routes = require('./route/public_route').public;
 const autho_routes = require("./route/auth_route").authorization
-const secretToken = process.env.SESSION_SECRET
 
 
 const app = express()
 
-
-
 //db
 require("./db")
-//passpor-local
-require('./passport/local-auth');
 
 
-
-//subir archivos con multer
+//config multer
 const storage = multer.diskStorage({
     destination: path.join(__dirname, "public/pdf"),
     filename: (req, file, cb) => {
@@ -36,8 +29,7 @@ const storage = multer.diskStorage({
 
 
 //routing
-const route = require("./route/rutas");
-const { cleanupUnverifiedUsers } = require('./modules/cleanUserData');
+const { verifyToken } = require('./modules/verify.token');
 
 
 
@@ -61,16 +53,13 @@ app.use(morgan("dev"))
 app.use(express.json({ limit: '50mb' }))
 
 app.use(cors({
-    origin: "http://localhost:3000", // dirección del frontend
+    origin: "http://localhost:3000", 
     credentials: true
 }))
 
 app.use(passport.initialize());
 
 app.use(passport.session());
-
-
-
 
 app.use("/customer",
     session({
@@ -79,39 +68,7 @@ app.use("/customer",
         saveUninitialized: true,
     }))
 
-
-app.use("/customer/auth/*", function auth(req, res, next) {
-    console.log(req.headers)
-    try {
-        if (req.headers["x-access-token"]) {
-              let token = req.headers["x-access-token"]; // Access Token
-
-            // Verify JWT token for user authentication
-            jwt.verify(token, secretToken, (err, user) => {
-
-                if (!err) {
-                    req.user = user; // Set authenticated user data on the request object
-                    next(); // Proceed to the next middleware
-                } else {
-                    return res.status(403).json({ mens: "Por favor registrate o inicia sesion" }); // Return error if token verification fails
-                }
-            });
-
-            // Return error if no access token is found in the session
-        } else {
-            return res.status(403).json({ mens: "Por favor registrate o inicia sesion 55" }); // Return error if token verification fails
-        }
-    } catch (error) {
-
-        console.log(error)
-
-        return res.status(403).json({ mens: "Por favor registrate o inicia sesion 99" }); // Return error if token verification fails
-    }
-
-});
-
-
-
+app.use("/customer/auth/*", verifyToken);
 
 app.use(multer({
     storage,
@@ -125,22 +82,13 @@ app.use("/customer/auth", autho_routes);
 app.use("/customer/", genl_routes);
 
 
-
-
-
 //static
 app.use(express.static(path.join(__dirname, "public")))
-
-
-//cleanupUnverifiedUsers()
-
-
-
 
 
 
 //init server
 const puerto = app.get("port")
 app.listen(puerto, () => {
-    console.log(`servidor en el puerto ${puerto}`)
+    console.log(`The server is started in the port ${puerto}`)
 })

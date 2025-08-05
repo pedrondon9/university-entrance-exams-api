@@ -1,26 +1,8 @@
-const jwt = require("jsonwebtoken")
-const bcrypt = require("bcrypt")
-
-
-
-
 /********************************* */
 /**PARA IMPORTAR MODELOS*****************/
 /********************************* */
 
-
-const User = require("../modelos/userRegistro");
-const SendEmail = require("./sendEmail");
-const { registerUser } = require("./authRegister");
-
-
-
-
-/********************************* */
-/**FIN DE IMPORTAR MODELOS*****************/
-/********************************* */
-
-
+const { registerUser } = require("./auth.register");
 
 async function ResendEmail(req, res) {
 
