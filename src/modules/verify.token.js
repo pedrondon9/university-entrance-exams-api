@@ -45,9 +45,9 @@ const verifyToken = async (req, res, next) => {
 
 const verifyTokenRegister = async (req, res, next) => {
     try {
-        const headerToken = req.headers["x-access-token"] || req.headers.authorization;
+        const headerToken = req.headers["x-access-token"] || req.headers.authorization || req.body.token;
         if (!headerToken) {
-            return res.status(401).json({ verify: false, message: "Toekn no encontrado" });
+            return res.status(401).json({ verify: false, message: "Token no encontrado" });
         }
         const token = headerToken.startsWith("Bearer ")
             ? headerToken.split(" ")[1]
@@ -59,7 +59,7 @@ const verifyTokenRegister = async (req, res, next) => {
             }
 
             try {
-                req.body.user = user;
+                req.body.user = tokenData;
                 return next();
 
             } catch (err) {
