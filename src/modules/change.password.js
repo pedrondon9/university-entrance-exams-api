@@ -23,7 +23,7 @@ const changePassword = async (req, res) => {
 
         const token = await generateAuthTokenRegister(req.body)
 
-        const verificationLink = `http://localhost:3000/${token}`;      
+        const verificationLink = `https://selectividad.mumbx.com/#/confirm${token}`;      
 
         const constentEmail = `<p>Hi ${user.fullname},</p>
              <p>Porfavor verifica tu correo haciendo clik en el siguiente enlace:</p>
