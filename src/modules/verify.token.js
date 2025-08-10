@@ -44,8 +44,9 @@ const verifyToken = async (req, res, next) => {
 
 
 const verifyTokenRegister = async (req, res, next) => {
+    console.log(req.body, "req.body en verifyTokenRegister");
     try {
-        const headerToken = req.headers["x-access-token"] || req.headers.authorization || req.body.token;
+        const headerToken = req.body.token;
         if (!headerToken) {
             return res.status(401).json({ verify: false, message: "Token no encontrado" });
         }
@@ -53,12 +54,14 @@ const verifyTokenRegister = async (req, res, next) => {
             ? headerToken.split(" ")[1]
             : headerToken;
 
+
         jwt.verify(token, SECRET_TOKEN, async (err, tokenData) => {
             if (err) {
                 return res.status(401).json({ verify: false, message: "Token expirado inicia sesion" });
             }
 
             try {
+                
                 req.body.user = tokenData;
                 return next();
 
@@ -68,6 +71,7 @@ const verifyTokenRegister = async (req, res, next) => {
             }
         });
     } catch (err) {
+        console.log(err , "Error general en verifyTokenRegister");
         return res.status(500).json({ verify: false, message: "Error interno del servidor" });
     }
 };

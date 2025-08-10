@@ -24,7 +24,7 @@ const signUpUser = async (req, res) => {
         const token = await generateAuthTokenRegister(req.body)
 
         //console.log(user, "user", token, "token");
-        const verificationLink = `https://selectividad.mumbx.com/#/confirm/${token}`;
+        const verificationLink = `http://localhost:3000/#/confirm/${token}`;
         const constentEmail = `<p>Hi ${fullname},</p>
                      <p>Please verify your email by clicking the link below:</p>
                      <a href="${verificationLink}">Verify Email</a>`;

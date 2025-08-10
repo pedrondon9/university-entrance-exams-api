@@ -6,7 +6,8 @@ async function ResendEmail(req, res) {
 
     try {
 
-        const verificationLink = `https://selectividad.mumbx.com/#/${token}`;        
+        const verificationLink = `http://localhost:3000/#/confirm/${token}`;   
+        console.log(verificationLink)     
         const constentEmail = `<p>Hi ${user.fullname},</p>
              <p>Porfavor verifica tu correo haciendo clik en el siguiente enlace:</p>
              <a href="${verificationLink}">Verifica Correo</a>`;
@@ -20,6 +21,7 @@ async function ResendEmail(req, res) {
 
 
     } catch (error) {
+        console.log(error)
 
         res.status(500).json({ success: false, message:  "Error interno del servidor"  })
 
