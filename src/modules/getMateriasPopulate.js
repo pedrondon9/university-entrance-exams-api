@@ -3,28 +3,27 @@ const materia = require("../models/materia");
 
 async function GetMaterias(req, res) {
     try {
-        const result = await materia.paginate({}, {
-            limit: 100,
-            populate: {
-                path: "examenUploadId",//referencia definida en el schema
-              },
-            sort: { createdAt: -1 }
-        })
+        const result = await materia.find()
+            .populate({
+                path: "examenUploadId",
+                options: { sort: { año: -1 } }
+            })
+            .lean();
 
-        const materiasYExamenes = result.docs.map(materia => {
+        const materiasYExamenes = result.map(materia => {
             const agrupados = materia.examenUploadId.reduce((acc, examen) => {
-              if (!acc[examen.año]) {
-                acc[examen.año] = [];
-              }
-              acc[examen.año].push(examen);
-              return acc;
+                if (!acc[examen.año]) {
+                    acc[examen.año] = [];
+                }
+                acc[examen.año].push(examen);
+                return acc;
             }, {});
-          
+
             return {
-              ...materia,
-              examenesPorYear: agrupados
+                ...materia,
+                examenesPorYear: agrupados
             };
-          });
+        });
 
         return res.status(200).json({ success: true, message: '', response: materiasYExamenes })
 
