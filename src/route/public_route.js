@@ -104,13 +104,27 @@ public_users.get("/getRespComentResp/:id", async (req, res) => {
 public_users.get("/getExamenList", async (req, res) => {
     try {
         const examenList = await UploadExamen.find()
-        console.log(examenList)
+        //console.log(examenList)
+
+        
         res.status(200).json(examenList)
     } catch (error) {
-        console.log(error)
+        //console.log(error)
         res.status(500).json("hay un problema")
     }
 })
+
+const GetMateriasPopulate = require("../modules/getMateriasPopulate");
+public_users.get("/getExamen", async (req, res) => {
+    await GetMateriasPopulate(req, res)
+})
+
+const GetMaterias = require("../modules/getMaterias");
+public_users.get("/getMaterias", async (req, res) => {
+    await GetMaterias(req, res)
+})
+
+
 
 
 

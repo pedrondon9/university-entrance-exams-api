@@ -11,12 +11,17 @@ const session = require('express-session');
 const passport = require('passport');
 const genl_routes = require('./route/public_route').public;
 const autho_routes = require("./route/auth_route").authorization
+const { initializeRoles } = require('./script/initializeRoles');
+const { verifyToken } = require('./modules/verify.token');
 
 
 const app = express()
 
 //db
 require("./db")
+
+// create permission
+initializeRoles()
 
 
 //config multer
@@ -26,10 +31,6 @@ const storage = multer.diskStorage({
         cb(null, uuidv4() + `${path.extname(file.originalname).toLocaleLowerCase() ? path.extname(file.originalname).toLocaleLowerCase() : ".png"}`);
     }
 })
-
-
-//routing
-const { verifyToken } = require('./modules/verify.token');
 
 
 

@@ -46,7 +46,7 @@ const ResponseResponse = require("../models/response.respon");
  * Mongoose model for exam data.
  * @type {import('mongoose').Model}
  */
-const ExamenDatos = require("../models/exame.data");
+const ExamenDatos = require("../models/materia");
 
 /**
  * Module for adding a test/exam.
@@ -151,6 +151,11 @@ auth_users.get("/getExamenList/:id", async (req, res) => {
       console.log(error)
       res.status(500).json("hay un problema")
   }
+})
+
+const getExamsUploadUserId = require("../modules/getExamsUploadUserId");
+auth_users.get("/get_exams_upload_iduser/:id", async (req, res) => {
+    await getExamsUploadUserId(req, res)
 })
 
 /**

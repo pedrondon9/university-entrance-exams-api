@@ -8,6 +8,8 @@ const users =  new Schema({
     fullname:{type:String},
     email:{type:String},
     password:{type:String},
+    roles:[{type:Schema.Types.ObjectId,ref:"Role"}],
+    examenUploadId: [{ type: Schema.Types.ObjectId, ref: 'uploadExamen' }],//El id que relacionara el examen con sus comentarios
     state:{type:Boolean},
     token:{type:String},
     contact:{type:String},
