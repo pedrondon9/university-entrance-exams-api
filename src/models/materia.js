@@ -7,7 +7,7 @@ const exam_data =  new Schema({
     name:{type:String,trim:true},
     description:{type:String,trim:true},
     tags:{type:Array},
-    examenUploadId: [{ type: Schema.Types.ObjectId, ref: 'uploadExamen' }],//El id que relacionara el examen con sus comentarios
+    examenUploadId: [{ type: Schema.Types.ObjectId, ref: 'uploadExamen',default: [] }],//El id que relacionara el examen con sus comentarios
 
 },{
     timestamps:true // para guardar el tiempo de la creacion y actualizacion

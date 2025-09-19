@@ -10,17 +10,17 @@ async function GetMaterias(req, res) {
             })
             .lean();
 
-        const materiasYExamenes = result.map(materia => {
-            const agrupados = materia.examenUploadId.reduce((acc, examen) => {
-                if (!acc[examen.año]) {
-                    acc[examen.año] = [];
-                }
-                acc[examen.año].push(examen);
+        const materiasYExamenes = result.map(m => {
+            const exams = Array.isArray(m.examenUploadId) ? m.examenUploadId : []; // <-- guard
+            const agrupados = exams.reduce((acc, examen) => {
+                const year = examen && examen.año ? String(examen.año) : "unknown";
+                if (!acc[year]) acc[year] = [];
+                acc[year].push(examen);
                 return acc;
             }, {});
 
             return {
-                ...materia,
+                ...m,
                 examenesPorYear: agrupados
             };
         });
