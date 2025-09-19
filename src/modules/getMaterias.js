@@ -5,9 +5,6 @@ async function GetMateriaPopulate(req, res) {
     try {
         const result = await materia.paginate({}, {
             limit: 100,
-            populate: {
-                path: "examenUploadId",//referencia definida en el schema
-              },
             sort: { createdAt: -1 }
         })
         return res.status(200).json({ success: true, message: '', response: result })
