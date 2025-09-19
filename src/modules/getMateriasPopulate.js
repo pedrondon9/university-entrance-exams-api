@@ -12,16 +12,21 @@ async function GetMaterias(req, res) {
 
         const materiasYExamenes = result.map(m => {
             const exams = Array.isArray(m.examenUploadId) ? m.examenUploadId : []; // <-- guard
-            const agrupados = exams.reduce((acc, examen) => {
-                const year = examen && examen.año ? String(examen.año) : "unknown";
-                if (!acc[year]) acc[year] = [];
-                acc[year].push(examen);
-                return acc;
-            }, {});
+
+            const agrupados = Object.values(
+                exams.reduce((acc, examen) => {
+                    const year = examen?.año ? String(examen.año) : "unknown";
+                    if (!acc[year]) {
+                        acc[year] = { year, exams: [] };
+                    }
+                    acc[year].exams.push(examen);
+                    return acc;
+                }, {})
+            );
 
             return {
                 ...m,
-                examenUploadId: agrupados
+                examenUploadId: agrupados // ahora es un array [{year, exams:[]}, ...]
             };
         });
 
