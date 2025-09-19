@@ -11,7 +11,7 @@ async function GetMaterias(req, res) {
             sort: { createdAt: -1 }
         })
 
-        const materiasYExamenes = result.map(materia => {
+        const materiasYExamenes = result.docs.map(materia => {
             const agrupados = materia.examenUploadId.reduce((acc, examen) => {
               if (!acc[examen.año]) {
                 acc[examen.año] = [];
@@ -25,10 +25,12 @@ async function GetMaterias(req, res) {
               examenesPorYear: agrupados
             };
           });
-          
+
         return res.status(200).json({ success: true, message: '', response: materiasYExamenes })
 
     } catch (error) {
+        res.status(500).json("hay un problema")
+
     }
 }
 
