@@ -21,7 +21,7 @@ async function GetMaterias(req, res) {
 
             return {
                 ...m,
-                examenesPorYear: agrupados
+                examenUploadId: agrupados
             };
         });
 
