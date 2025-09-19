@@ -10,6 +10,7 @@ async function GetMateriaPopulate(req, res) {
         return res.status(200).json({ success: true, message: '', response: result })
 
     } catch (error) {
+        
     }
 }
 
