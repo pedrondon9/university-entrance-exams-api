@@ -16,7 +16,7 @@ const AddExam = async (req, res) => {
       return res.status(200).json({ message: "Faltan datos porfavor revisa el formulario", success: false })
     }
 
-    var Materia = await Materias.findOne({ 'materia': materia })
+    var Materia = await Materias.findOne({ 'name': materia })
     
     if (!Materia) {
       return res.status(200).json({ message: "La materia todavia no existe", success: false })

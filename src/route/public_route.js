@@ -105,8 +105,6 @@ public_users.get("/getExamenList", async (req, res) => {
     try {
         const examenList = await UploadExamen.find()
         //console.log(examenList)
-
-        
         res.status(200).json(examenList)
     } catch (error) {
         //console.log(error)
