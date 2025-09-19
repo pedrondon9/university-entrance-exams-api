@@ -4,7 +4,8 @@ const mongoosePaginate = require("mongoose-paginate-v2")
 //PARA AGREGAR EXAMEN
 const UploadExamen =  new Schema({
     materia:{type:String,trim:true},//nombre de la materia
-    info:{type:Array}//array que contiene los examenes de  las distintas convocatorias de la materia
+    info:{type:Array},//array que contiene los examenes de  las distintas convocatorias de la materia
+    userId: { type: Schema.Types.ObjectId, ref: 'user' },
 },{
     timestamps:true // para guardar el tiempo de la creacion y actualizacion
 }

@@ -139,8 +139,9 @@ auth_users.post("/deleteExam", async (req, res) => {
 
 
 auth_users.get("/getExamenList/:id", async (req, res) => {
+  console.log(req.params.id,'ID')
   try {
-      const examenList = await UploadExamen.paginate({ userId: req.params.id },{
+      const examenList = await ExamenDatos.paginate({ userId: req.params.id },{
         limit: 100,
         sort: { createdAt: -1 }
       })

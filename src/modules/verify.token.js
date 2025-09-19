@@ -4,7 +4,7 @@ const { verifyUsers } = require('./verify.user'); // asumo que tienes esto
 
 const verifyToken = async (req, res, next) => {
     try {
-        
+
         const headerToken = req.headers["x-access-token"] || req.headers.authorization;
 
         if (!headerToken) {
@@ -21,7 +21,7 @@ const verifyToken = async (req, res, next) => {
             }
 
             try {
-                console.log(tokenData, "tokenData en verifyToken");
+                //console.log(tokenData, "tokenData en verifyToken");
                 const user = await verifyUsers(tokenData.user, token, res);
                 if (!user) {
                     return res.status(403).json({ verify: false, message: "Porfavor inicia sesion" });
@@ -31,12 +31,12 @@ const verifyToken = async (req, res, next) => {
                 return next();
 
             } catch (err) {
-                console.error("Error al verificar el usuario:", err);
+                //console.error("Error al verificar el usuario:", err);
                 return res.status(500).json({ verify: false, message: "Error interno del servidor" });
             }
         });
     } catch (err) {
-        console.error("Error general en middleware:", err);
+        //console.error("Error general en middleware:", err);
         return res.status(500).json({ verify: false, message: "Error interno del servidor" });
     }
 };
