@@ -7,6 +7,7 @@ const exam_data =  new Schema({
     materia:{type:String,trim:true},
     año:{type:String,trim:true},
     mes:{type:String,trim:true},
+    idUser: { type: Schema.Types.ObjectId, ref: 'user' },
     userId: { type: Schema.Types.ObjectId, ref: 'user' },
     estado:{type:String,trim:true},//si esta corregido el examen o noo
     face:{type:String,trim:true},//face genera o especifica

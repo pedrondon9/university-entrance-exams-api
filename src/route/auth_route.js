@@ -140,7 +140,10 @@ auth_users.post("/deleteExam", async (req, res) => {
 
 auth_users.get("/getExamenList/:id", async (req, res) => {
   try {
-      const examenList = await UploadExamen.find({ userId: req.params.id })
+      const examenList = await UploadExamen.paginate({ userId: req.params.id },{
+        limit: 100,
+        sort: { createdAt: -1 }
+      })
       console.log(examenList)
       res.status(200).json(examenList)
   } catch (error) {

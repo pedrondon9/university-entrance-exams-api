@@ -4,6 +4,7 @@ const { verifyUsers } = require('./verify.user'); // asumo que tienes esto
 
 const verifyToken = async (req, res, next) => {
     try {
+        
         const headerToken = req.headers["x-access-token"] || req.headers.authorization;
 
         if (!headerToken) {
