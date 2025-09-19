@@ -137,6 +137,18 @@ auth_users.post("/deleteExam", async (req, res) => {
   }
 });
 
+
+auth_users.get("/getExamenList/:id", async (req, res) => {
+  try {
+      const examenList = await UploadExamen.find({ userId: req.params.id })
+      console.log(examenList)
+      res.status(200).json(examenList)
+  } catch (error) {
+      console.log(error)
+      res.status(500).json("hay un problema")
+  }
+})
+
 /**
  * Exports the authorization router.
  * @type {express.Router}

@@ -7,10 +7,10 @@ const exam_data =  new Schema({
     materia:{type:String,trim:true},
     año:{type:String,trim:true},
     mes:{type:String,trim:true},
+    userId: { type: Schema.Types.ObjectId, ref: 'user' },
     estado:{type:String,trim:true},//si esta corregido el examen o noo
     face:{type:String,trim:true},//face genera o especifica
     userName:{type:String},//nombre del usuario que subió el examen
-    userId:{type:String},//id del usuario que subió el examen
     userPhoto:{type:String},//link de la foto del usuario que subió el examen
     numComent:{type:String},
     pdfLink:{type:String},

@@ -113,4 +113,5 @@ public_users.get("/getExamenList", async (req, res) => {
 })
 
 
+
 module.exports.public = public_users;
