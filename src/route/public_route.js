@@ -5,7 +5,7 @@ const public_users = express.Router();
 const Comment = require("../models/coments")
 const UploadExamen = require("../models/upload.exam")
 const User = require("../models/users")
-const ResponseComment = require("../models/reponse.comment")
+const ResponseComment = require("../models/reponse")
 const ResponseResponse = require("../models/response.respon")
 const { verifyTokenRegister } = require("../modules/verify.token");
 
@@ -120,6 +120,11 @@ public_users.get("/getExamen", async (req, res) => {
 const GetMaterias = require("../modules/getMaterias");
 public_users.get("/getMaterias", async (req, res) => {
     await GetMaterias(req, res)
+})
+
+const getComment = require("../modules/get.comment");
+public_users.get("/get_comment/:id", async (req, res) => {
+  await getComment(req, res)
 })
 
 

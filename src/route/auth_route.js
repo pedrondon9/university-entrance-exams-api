@@ -61,7 +61,7 @@ const AddTest = require("../modules/addTest");
  * @param {express.Response} res - Express response object.
  * @param {Object} modelInstance - Mongoose model instance to save.
  */
-const { addCommentAndResp } = require("../modules/add.comment.and.resp");
+const addCommentAndResp = require("../modules/add.comment.and.resp");
 
 /**
  * Route to add a new comment.
@@ -70,33 +70,12 @@ const { addCommentAndResp } = require("../modules/add.comment.and.resp");
  * @param {express.Request} req - Express request object.
  * @param {express.Response} res - Express response object.
  */
-auth_users.post("/addComent", async (req, res) => {
-  addCommentAndResp(req, res, new Comment())
+
+
+auth_users.post("/add_coment_resp", async (req, res) => {
+  await addCommentAndResp(req, res)
 });
 
-/**
- * Route to add a response to a comment.
- * @route POST /addComentResp
- * @group Comments
- * @param {express.Request} req - Express request object.
- * @param {express.Response} res - Express response object.
- */
-auth_users.post("/addComentResp", async (req, res) => {
-  addCommentAndResp(req, res, new ResponseComment())
-  // (Commented-out legacy code for handling image uploads and saving response comments)
-});
-
-/**
- * Route to add a response to a response comment.
- * @route POST /addRespComentResp
- * @group Comments
- * @param {express.Request} req - Express request object.
- * @param {express.Response} res - Express response object.
- */
-auth_users.post("/addRespComentResp", async (req, res) => {
-  addCommentAndResp(req, res, new ResponseResponse())
-  // (Commented-out legacy code for handling image uploads and saving response responses)
-});
 
 /**
  * Route to add a new exam.
@@ -139,23 +118,23 @@ auth_users.post("/deleteExam", async (req, res) => {
 
 
 auth_users.get("/getExamenList/:id", async (req, res) => {
-  console.log(req.params.id,'ID')
+  console.log(req.params.id, 'ID')
   try {
-      const examenList = await ExamenDatos.paginate({ userId: req.params.id },{
-        limit: 100,
-        sort: { createdAt: -1 }
-      })
-      console.log(examenList)
-      res.status(200).json(examenList)
+    const examenList = await ExamenDatos.paginate({ userId: req.params.id }, {
+      limit: 100,
+      sort: { createdAt: -1 }
+    })
+    console.log(examenList)
+    res.status(200).json(examenList)
   } catch (error) {
-      console.log(error)
-      res.status(500).json("hay un problema")
+    console.log(error)
+    res.status(500).json("hay un problema")
   }
 })
 
 const getExamsUploadUserId = require("../modules/getExamsUploadUserId");
 auth_users.get("/get_exams_upload_iduser/:id", async (req, res) => {
-    await getExamsUploadUserId(req, res)
+  await getExamsUploadUserId(req, res)
 })
 
 /**
