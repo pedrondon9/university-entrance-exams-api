@@ -34,7 +34,7 @@ const UploadExamen = require("../models/upload.exam");
  * Mongoose model for response comments.
  * @type {import('mongoose').Model}
  */
-const ResponseComment = require("../models/reponse.comment");
+const ResponseComment = require("../models/reponse");
 
 /**
  * Mongoose model for response to response comments.
