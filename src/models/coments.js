@@ -6,12 +6,12 @@ const mongoosePaginate = require("mongoose-paginate-v2")
 
 const Comment = new Schema({
     examenId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "UploadExamen",
         required: true,
     },
     userId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "User",
         required: true,
     },
@@ -23,8 +23,8 @@ const Comment = new Schema({
     // Si es null → comentario raíz
     // Si tiene valor → es respuesta a otro comentario
     parentId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Comentario",
+        type: Schema.Types.ObjectId,
+        ref: "commentS",
         default: null,
     },
 }, {
