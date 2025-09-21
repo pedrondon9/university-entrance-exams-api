@@ -1,11 +1,12 @@
 
 const upload = require("../models/upload.images")
+URL_UPLOAD = process.env.URL_UPLOAD || "http://localhost:5500/pdf/"
 
 
 async function UploadImages(req, res) {
 
     const logo = req.files?.["imagen1"]?.[0]
-        ? URL_FILE + req.files["imagen1"][0].filename
+        ? URL_UPLOAD + req.files["imagen1"][0].filename
         : '';
 
     try {
