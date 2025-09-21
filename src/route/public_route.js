@@ -127,6 +127,11 @@ public_users.get("/get_comment/:id", async (req, res) => {
   await getComment(req, res)
 })
 
+const uploadImgs = require("../modules/upload.images");
+public_users.post("/upload_imgs", async (req, res) => {
+    await uploadImgs(req, res)
+})
+
 
 
 
