@@ -13,7 +13,7 @@ async function  addCommentAndResp (req, res) {
             examenId,
             userId,
             content,
-            parentId
+            parentId:JSON.parse(parentId)
         });
 
         console.log(comment)
