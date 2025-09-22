@@ -49,6 +49,8 @@ async function GetComment(req, res) {
         // Retornamos el paginado + árbol
         res.json({
             totalDocs: result.totalDocs,
+            nextPage: result.nextPage,
+            prevPage: result.prevPage,
             totalPages: result.totalPages,
             page: result.page,
             limit: result.limit,
