@@ -72,7 +72,7 @@ public_users.get("/getComent/:id", async (req, res) => {
             sort: { createdAt: -1 }
         })
         console.log(comment)
-        res.status(200).json({sucess:true,response:comment, message:"comentarios obtenidos correctamente"})
+        res.status(200).json({ sucess: true, response: comment, message: "comentarios obtenidos correctamente" })
     } catch (error) {
         res.status(500).json("hay un problema")
     }
