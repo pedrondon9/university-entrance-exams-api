@@ -19,7 +19,7 @@ public_users.post('/registro_post', async (req, res) => {
 
 
 const ResendEmail = require('../modules/resend.email')
-public_users.post('/resend-email',verifyTokenRegister, async (req, res) => {
+public_users.post('/resend-email', verifyTokenRegister, async (req, res) => {
     await ResendEmail(req, res)
 })
 
@@ -37,7 +37,7 @@ public_users.post('/login_post', async (req, res) => {
 })
 
 const ActiveCount = require("../modules/active.count");
-public_users.post('/active-count',verifyTokenRegister, async (req, res) => {
+public_users.post('/active-count', verifyTokenRegister, async (req, res) => {
     await ActiveCount(req, res)
 })
 
@@ -57,13 +57,22 @@ public_users.post("/getComentInfinityScroll/:id", async (req, res) => {
 
 })
 
- 
+
 public_users.get("/getComent/:id", async (req, res) => {
     const { id } = req.params
     try {
-        const comment = await Comment.paginate({ examenId: id }, { limit: 5, sort: { createdAt: -1 } })
+        const comment = await Comment.paginate({ examenId: id }, {
+            limit: 5,
+            populate: {
+                path: "userId",//referencia definida en el schema
+            },
+            populate: {
+                path: "examenId",//referencia definida en el schema
+            },
+            sort: { createdAt: -1 }
+        })
         console.log(comment)
-        res.status(200).json(comment)
+        res.status(200).json({sucess:true,response:comment, message:"comentarios obtenidos correctamente"})
     } catch (error) {
         res.status(500).json("hay un problema")
     }
@@ -124,7 +133,7 @@ public_users.get("/getMaterias", async (req, res) => {
 
 const getComment = require("../modules/get.comment");
 public_users.get("/get_comment/:id", async (req, res) => {
-  await getComment(req, res)
+    await getComment(req, res)
 })
 
 const uploadImgs = require("../modules/upload.images");
