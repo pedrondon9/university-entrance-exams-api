@@ -6,17 +6,18 @@ async function ResendEmail(req, res) {
 
     try {
 
-        const verificationLink = `https://selectividad.mumbx.com/#/confirm/${token}`;   
-        console.log(verificationLink)     
+        const verificationLink = `https://selectividad.mumbx.com/#/confirm/${token}`; 
+
         const constentEmail = `<p>Hi ${user.user.fullname},</p>
              <p>Porfavor verifica tu correo haciendo clik en el siguiente enlace:</p>
              <a href="${verificationLink}">Verifica Correo</a>`;
 
-        await SendEmail(user.user.email, constentEmail);
+        const resend  = await SendEmail(user.user.email, constentEmail);
 
         console.log(user.user,'hhhh')
+        console.log(resend,'gggg')
 
-        res.status(200).json({ success: true, token: token, message: 'Nuevo link de verificacion enviado enviado' })
+        res.status(200).json({ success: true, token: token, message: 'Nuevo link de verificacion enviado' })
 
 
 
