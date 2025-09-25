@@ -14,8 +14,9 @@ async function ResendEmail(req, res) {
 
         const resend  = await SendEmail(user.user.email, constentEmail);
 
-        console.log(user.user,'hhhh')
-        console.log(resend,'gggg')
+        //console.log(user.user,'hhhh')
+
+        //console.log(resend,'gggg')
 
         res.status(200).json({ success: true, token: token, message: 'Nuevo link de verificacion enviado' })
 
