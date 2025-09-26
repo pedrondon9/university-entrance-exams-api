@@ -96,7 +96,9 @@ auth_users.post("/addExamen", async (req, res) => {
  * @param {express.Response} res - Express response object.
  */
 auth_users.post("/deleteExam", async (req, res) => {
-  const { id, año, mes, estado, face } = req.body
+  const { id } = req.body
+
+  console.log(req.body, 'REQ.BODY DELETE EXAM')
 
   try {
 
@@ -110,7 +112,7 @@ auth_users.post("/deleteExam", async (req, res) => {
     // actualizar la materia quitando el id del examen
     const update = await Materias.findByIdAndUpdate(
       Materia._id, // asegúrate que Materia._id viene del request o lo tienes definido antes
-      { $pull: { examenUploadId: new mongoose.Types.ObjectId(id) } },
+      { $pull: { examenUploadId: id } },
       { new: true }
     );
 
