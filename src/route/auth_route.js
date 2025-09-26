@@ -111,7 +111,7 @@ auth_users.post("/deleteExam", async (req, res) => {
 
     // actualizar la materia quitando el id del examen
     const update  = await ExamenDatos.findByIdAndUpdate(
-      Materia._id, // asegúrate que Materia._id viene del request o lo tienes definido antes
+      ExamenDatos._id, // asegúrate que Materia._id viene del request o lo tienes definido antes
       { $pull: { examenUploadId: id } },
       { new: true }
     );
