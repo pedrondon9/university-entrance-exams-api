@@ -100,14 +100,30 @@ auth_users.post("/deleteExam", async (req, res) => {
 
   try {
 
-    const deleteExamen = await UploadExamen.findByIdAndDelete(id)
+    // borrar examen
+    const deleteExamen = await UploadExamen.findByIdAndDelete(id);
 
-    res.status(200).json("borrado")
+    if (!deleteExamen) {
+      return res.status(404).json({ message: "Examen no encontrado" });
+    }
+
+    // actualizar la materia quitando el id del examen
+    const update = await Materias.findByIdAndUpdate(
+      Materia._id, // asegúrate que Materia._id viene del request o lo tienes definido antes
+      { $pull: { examenUploadId: new mongoose.Types.ObjectId(id) } },
+      { new: true }
+    );
+
+    res.status(200).json({
+      message: "Examen borrado y materia actualizada",
+      examenEliminado: deleteExamen,
+      materiaActualizada: update,
+    });
 
   } catch (error) {
 
     res.status(500).json(`Hay un problema`)
-    
+
   }
 });
 
