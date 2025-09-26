@@ -56,7 +56,7 @@ const AddExam = async (req, res) => {
 
     console.log(update, "update")
 
-    return res.status(200).json("publicado")
+    return res.status(200).json({ message: "Publicado", success: true })
 
   } catch (error) {
 
