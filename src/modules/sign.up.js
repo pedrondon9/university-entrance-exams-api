@@ -11,16 +11,18 @@ const signUpUser = async (req, res) => {
         const { fullname, password, email } = req.body;
 
         const user = await User.findOne({ email });
-        console.log(user)
 
+        
         if (user) {
-
             return res.status(403).json({ message: "El usuario ya existe", success: false });
         }
-        if (!(email && fullname && password)) {
 
+
+        if (!(email && fullname && password)) {
             res.status(403).json({ message: "Comprueba que has rellenado todos los campos", success: false });
         }
+
+
         const token = await generateAuthTokenRegister(req.body)
 
         //console.log(user, "user", token, "token");

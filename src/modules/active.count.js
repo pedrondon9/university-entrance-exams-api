@@ -12,7 +12,6 @@ async function ResendEmail(req, res) {
 
         const { user, token } = await registerUser(req, res)
 
-        console.log(user, "user", token, "token");
 
         res.status(200).json({ success: true, token: token, userData: user, message: 'Cuenta activada, inicia sesion en la pagina principal' })
 

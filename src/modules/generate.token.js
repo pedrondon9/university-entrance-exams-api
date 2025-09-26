@@ -11,7 +11,7 @@ const generateAuthTokenRegister = async (user) => {
 
 const generateAuthToken = async (user) => {
     const token = jwt.sign({ user: user }, SECRET_TOKEN, {
-        expiresIn: '10m'
+        expiresIn: '360m'
     });
 
     return token;
