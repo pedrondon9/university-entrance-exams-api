@@ -117,6 +117,7 @@ auth_users.post("/deleteExam", async (req, res) => {
     );
 
     res.status(200).json({  
+      success:true,
       message: "Examen borrado y materia actualizada",
       examenEliminado: deleteExamen,
       materiaActualizada: update,
