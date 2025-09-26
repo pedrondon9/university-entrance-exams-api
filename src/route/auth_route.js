@@ -97,22 +97,17 @@ auth_users.post("/addExamen", async (req, res) => {
  */
 auth_users.post("/deleteExam", async (req, res) => {
   const { id, año, mes, estado, face } = req.body
+
   try {
-    const examen = await UploadExamen.findById(id)
-    for (let i = 0; i < examen.info.length; i++) {
-      if (examen.info[i].año === año) {
-        for (let y = 0; y < examen.info[i].info_año.length; y++) {
-          if (examen.info[i].info_año[y].mes === mes && examen.info[i].info_año[y].face === face && examen.info[i].info_año[y].estado === estado) {
-            let arr = examen.info[i].info_año.splice(y, 1)
-            const new_update = await UploadExamen.findByIdAndUpdate(id, examen)
-            const deleteExamen = await ExamenDatos.findByIdAndDelete(arr[0]["examenId"])
-          }
-        }
-      }
-    }
+
+    const deleteExamen = await UploadExamen.findByIdAndDelete(id)
+
     res.status(200).json("borrado")
+
   } catch (error) {
+
     res.status(500).json(`Hay un problema`)
+    
   }
 });
 
